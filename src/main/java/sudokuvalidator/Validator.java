@@ -2,9 +2,9 @@ package sudokuvalidator;
 
 import java.util.Arrays;
 
-public class Validation {
+public class Validator {
 
-  private Validation() {
+  private Validator() {
     throw new IllegalStateException("Utility class");
   }
 
