@@ -58,6 +58,13 @@ public class GridTest {
   }
 
   @Test
+  public void shouldThrowIllegalArgumentForInvalidSubGridIndexes() {
+    assertThatThrownBy(() -> {
+      grid.getSubGridValues(0, 4);
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
   public void shouldGetColumnValues()  {
     assertThat(grid.getColumnValues(4)).isEqualTo(new Integer[]{
         9, 8, 9, 9, 2, 9, 9, 9, 9
@@ -65,9 +72,23 @@ public class GridTest {
   }
 
   @Test
+  public void shouldThrowIllegalArgumentForInvalidColumnIndex() {
+    assertThatThrownBy(() -> {
+      grid.getColumnValues(9);
+    }).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
   public void shouldGetRowValues()  {
     assertThat(grid.getRowValues(2)).isEqualTo(new Integer[]{
         2, 5, 4, 3, 9, 8, 1, 6, 7
     });
+  }
+
+  @Test
+  public void shouldThrowIllegalArgumentForInvalidRowIndex() {
+    assertThatThrownBy(() -> {
+      grid.getRowValues(-1);
+    }).isInstanceOf(IllegalArgumentException.class);
   }
 }
