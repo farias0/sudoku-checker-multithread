@@ -3,33 +3,30 @@ package sudokuvalidator;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputReader {
 
-  private static final Path SUDOKU_INPUT_PATH = Paths.get("sudoku_input.txt");
-
   private InputReader() {
     throw new IllegalStateException("Utility class");
   }
 
-  public static Integer[][] readGridInputFile() throws IOException {
-    var bytes = Files.readAllBytes(SUDOKU_INPUT_PATH);
+  public static Integer[][] readGridInputFile(Path path) throws IOException {
+    var bytes = Files.readAllBytes(path);
     return processGridInput(new String(bytes));
   }
 
   /*
-    reads a Sudoku grid in the following format:
-      0 1 2 3 4 5 6 7 8
-      0 1 2 3 4 5 6 7 8
-      0 1 2 3 4 5 6 7 8
-      0 1 2 3 4 5 6 7 8
-      0 1 2 3 4 5 6 7 8
-      0 1 2 3 4 5 6 7 8
-      0 1 2 3 4 5 6 7 8
-      0 1 2 3 4 5 6 7 8
+        processes a Sudoku grid in the following format:
+    0 1 2 3 4 5 6 7 8
+    0 1 2 3 4 5 6 7 8
+    0 1 2 3 4 5 6 7 8
+    0 1 2 3 4 5 6 7 8
+    0 1 2 3 4 5 6 7 8
+    0 1 2 3 4 5 6 7 8
+    0 1 2 3 4 5 6 7 8
+    0 1 2 3 4 5 6 7 8
    */
   static Integer[][] processGridInput(String input) throws IllegalArgumentException {
     final List<Integer[]> grid = new ArrayList<>();
